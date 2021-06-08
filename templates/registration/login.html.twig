@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+  {% block body %}
+    <h1> PAGE CONNEXION</h1>
+
+    <form novalidate method='POST'>
+      <div>
+        <label for="email">Email</label><br>
+        <input for="email" id='email'name='email' value='{{ app.session.get(constant('App\\Controller\\SecurityController::LAST_EMAIL'))}}' required autofocus>
+      </div>
+      <div>
+        <label for="password">password</label><br>
+        <input type="password" id='password'name='password' required >
+      </div>
+      <div>
+        <label for="remember_me">
+        <input type="checkbox" id="remember_me"name="_remember_me">
+        rester connécter
+        </label>
+      </div>
+      <input type="hidden" name="csrf_token" value="{{ csrf_token('login_form')}}">
+      <input type="submit" value='ce connecté'>
+    </form>
+  {% endblock %}

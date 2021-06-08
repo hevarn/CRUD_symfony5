@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserController!{% endblock %}
+
+{% block body %}
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <div class="container">
+    <div class="view-account">
+      <section class="module">
+        <div class="module-inner">
+          <div class="side-bar">
+            <div class="user-info">
+              <img src="{{ app.user.userImage }}" alt="image du user"/>
+            </div>
+            <nav class="side-menu">
+              <ul class="nav">
+                <li>
+                  <a href="#">
+                    <span class="fa fa-cog"></span>
+                    Settings</a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="fa fa-image"></span>
+                    Images</a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="fa fa-credit-card"></span>
+                    Billing</a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="fa fa-envelope"></span>
+                    Annonces</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div class="content-panel">
+            <h1 class="title">Bienvenue sur votre Profile :&nbsp&nbsp{{ app.user.getNom() }}&nbsp
+              {{ app.user.getPrenom() }}</h1>
+
+            <h1>telecharger vos images</h1>
+            <div class="my-custom-class-for-errors">
+              {{ form_errors(form) }}
+            </div>
+            {{ form_start(form) }}
+            {{ form_row(form.userImage) }}
+            <input type="submit" value="envoyer">
+            {{ form_end(form) }}
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1> PAGE CREE UN COMPTE</h1>
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+
+    <h1>Register</h1>
+    <div class="container m-5">
+        {{ form_start(registrationForm) }}
+            <div class="my-custom-class-for-errors">
+                {{ form_errors(registrationForm) }}
+            </div>
+            {{ form_row(registrationForm.email,{'attr': {'pattern': '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$'}}) }}
+            {{ form_row(registrationForm.nom) }}
+            {{ form_row(registrationForm.prenom) }}
+            {{ form_row(registrationForm.numeroTelephone) }}
+            {{ form_row(registrationForm.raisonSociale) }}
+            {{ form_row(registrationForm.numeroSiret) }}
+            {{ form_row(registrationForm.categorieProfessionnelle) }}
+            {{ form_row(registrationForm.nombreSalarie) }}
+            {{ form_row(registrationForm.creationEntreprise) }}
+            {{ form_row(registrationForm.geolocalisation) }}
+            {{ form_row(registrationForm.plainPassword, {
+                label: 'Password'
+            }) }}
+            {{ form_row(registrationForm.agreeTerms) }}
+
+            <button type="submit" class="btn">Register</button>
+        {{ form_end(registrationForm) }}
+    </div>
+  
+{% endblock %}
